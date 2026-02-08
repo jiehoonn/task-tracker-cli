@@ -1,11 +1,17 @@
 import argparse
 import json
 import datetime
+import os
 from tabulate import tabulate
+
+# Define the absolute path to the task list JSON file
+# This ensures the CLI works from any directory
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+TASK_LIST_FILE = os.path.join(SCRIPT_DIR, 'task_list.json')
 
 # General Commands
 def list_tasks(status: str = None):
-    filename = 'cli_folder/task_list.json'
+    filename = TASK_LIST_FILE
 
     try:
         with open(filename, 'r') as task_list:
@@ -43,7 +49,7 @@ def find_next_task_id(data: list):
 
 # CRUD Functions
 def add_task(description: str):
-    filename = 'cli_folder/task_list.json'
+    filename = TASK_LIST_FILE
 
     try:
         with open(filename, 'r') as task_list:
@@ -72,7 +78,7 @@ def add_task(description: str):
 
 
 def delete_task(task_id: int):
-    filename = 'cli_folder/task_list.json'
+    filename = TASK_LIST_FILE
 
     try:
         with open(filename, 'r') as task_list:
@@ -90,7 +96,7 @@ def delete_task(task_id: int):
 
 
 def update_task(task_id: int, new_description: str):
-    filename = 'cli_folder/task_list.json'
+    filename = TASK_LIST_FILE
 
     try:
         with open(filename, 'r') as task_list:
@@ -110,7 +116,7 @@ def update_task(task_id: int, new_description: str):
 
 # Status Functions
 def mark_in_progress(task_id: int):
-    filename = 'cli_folder/task_list.json'
+    filename = TASK_LIST_FILE
 
     try:
         with open(filename, 'r') as task_list:
@@ -129,7 +135,7 @@ def mark_in_progress(task_id: int):
         
 
 def mark_done(task_id: int):
-    filename = 'cli_folder/task_list.json'
+    filename = TASK_LIST_FILE
 
     try:
         with open(filename, 'r') as task_list:
@@ -149,7 +155,7 @@ def mark_done(task_id: int):
 def cli_entry_point():
     # Create Task List ===============
     default_data = []
-    filename = 'cli_folder/task_list.json'
+    filename = TASK_LIST_FILE
 
     try:
         # Try to open in read mode ('r')
