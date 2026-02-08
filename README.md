@@ -2,6 +2,8 @@
 
 A simple command-line interface (CLI) application for managing your tasks. Built with Python, it allows you to add, update, delete, and track the status of your tasks directly from the terminal.
 
+[Project Link](https://roadmap.sh/projects/task-tracker)
+
 ## Features
 
 - **Add tasks** with automatic ID assignment
